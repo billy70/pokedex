@@ -11,12 +11,16 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var collection: UICollectionView!
+    
+    var pokemon = [Pokemon]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         collection.dataSource = self
         collection.delegate = self
+        
+        parsePokemonCSV()
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,6 +28,25 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func parsePokemonCSV() {
+        
+        let path = NSBundle.mainBundle().pathForResource("pokemon", ofType: "csv")!
+        
+        do {
+            let csv = try CSV(contentsOfURL: path)
+            let rows = csv.rows
+            
+            for row in rows {
+                let pokeID = Int(row["id"]!)!
+                let name = row["identifier"]!
+                let creature = Pokemon(name: name, pokedexID: pokeID)
+                pokemon.append(creature)
+            }
+            
+        } catch let err as NSError {
+            print(err.debugDescription)
+        }
+    }
 
 }
 
@@ -33,8 +56,8 @@ extension ViewController: UICollectionViewDataSource {
         
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("pokemonCell", forIndexPath: indexPath) as? PokeCell {
             
-            let pokemon = Pokemon(name: "TEST_\(indexPath.row)", pokedexID: indexPath.row + 1)
-            cell.configureCell(pokemon)
+            let poke = pokemon[indexPath.row]
+            cell.configureCell(poke)
             
             return cell
             
