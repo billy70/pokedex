@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D363D77E1CCFB0E50081065E /* Pokemon_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D363D77D1CCFB0E50081065E /* Pokemon_Solid.ttf */; };
+		D363D7801CCFDDA50081065E /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D363D77F1CCFDDA50081065E /* music.mp3 */; };
 		D3A5F5BE1CCE7E6500116492 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A5F5BD1CCE7E6500116492 /* AppDelegate.swift */; };
 		D3A5F5C01CCE7E6500116492 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A5F5BF1CCE7E6500116492 /* ViewController.swift */; };
 		D3A5F5C31CCE7E6500116492 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3A5F5C11CCE7E6500116492 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		D363D77D1CCFB0E50081065E /* Pokemon_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pokemon_Solid.ttf; sourceTree = "<group>"; };
+		D363D77F1CCFDDA50081065E /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
 		D3A5F5BA1CCE7E6500116492 /* pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A5F5BD1CCE7E6500116492 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3A5F5BF1CCE7E6500116492 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				D363D77D1CCFB0E50081065E /* Pokemon_Solid.ttf */,
 				D3A5F5CF1CCEB29C00116492 /* pokemon.csv */,
+				D363D77F1CCFDDA50081065E /* music.mp3 */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			files = (
 				D3A5F5C81CCE7E6500116492 /* LaunchScreen.storyboard in Resources */,
 				D3A5F5C51CCE7E6500116492 /* Assets.xcassets in Resources */,
+				D363D7801CCFDDA50081065E /* music.mp3 in Resources */,
 				D3A5F5D01CCEB29C00116492 /* pokemon.csv in Resources */,
 				D3A5F5C31CCE7E6500116492 /* Main.storyboard in Resources */,
 				D363D77E1CCFB0E50081065E /* Pokemon_Solid.ttf in Resources */,
