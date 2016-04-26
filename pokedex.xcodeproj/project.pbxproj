@@ -15,6 +15,7 @@
 		D3A5F5D01CCEB29C00116492 /* pokemon.csv in Resources */ = {isa = PBXBuildFile; fileRef = D3A5F5CF1CCEB29C00116492 /* pokemon.csv */; };
 		D3A5F5D31CCEBF1B00116492 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A5F5D21CCEBF1B00116492 /* Pokemon.swift */; };
 		D3A5F5D61CCEF65400116492 /* PokeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A5F5D51CCEF65400116492 /* PokeCell.swift */; };
+		D3A5F5DA1CCF040400116492 /* csv.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A5F5D91CCF040400116492 /* csv.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D3A5F5CF1CCEB29C00116492 /* pokemon.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pokemon.csv; sourceTree = "<group>"; };
 		D3A5F5D21CCEBF1B00116492 /* Pokemon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		D3A5F5D51CCEF65400116492 /* PokeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokeCell.swift; sourceTree = "<group>"; };
+		D3A5F5D91CCF040400116492 /* csv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = csv.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				D3A5F5CF1CCEB29C00116492 /* pokemon.csv */,
 				D3A5F5BD1CCE7E6500116492 /* AppDelegate.swift */,
 				D3A5F5BF1CCE7E6500116492 /* ViewController.swift */,
+				D3A5F5D91CCF040400116492 /* csv.swift */,
 				D3A5F5C11CCE7E6500116492 /* Main.storyboard */,
 				D3A5F5C41CCE7E6500116492 /* Assets.xcassets */,
 				D3A5F5C61CCE7E6500116492 /* LaunchScreen.storyboard */,
@@ -166,6 +169,7 @@
 				D3A5F5C01CCE7E6500116492 /* ViewController.swift in Sources */,
 				D3A5F5BE1CCE7E6500116492 /* AppDelegate.swift in Sources */,
 				D3A5F5D31CCEBF1B00116492 /* Pokemon.swift in Sources */,
+				D3A5F5DA1CCF040400116492 /* csv.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
