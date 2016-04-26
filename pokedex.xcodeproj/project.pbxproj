@@ -64,10 +64,10 @@
 			children = (
 				D3A5F5D11CCEBEF600116492 /* Model */,
 				D3A5F5D41CCEF62400116492 /* View */,
-				D3A5F5CF1CCEB29C00116492 /* pokemon.csv */,
+				D3A5F5DC1CCF057C00116492 /* Controller */,
+				D3A5F5DB1CCF057000116492 /* Util */,
+				D3A5F5DD1CCF058900116492 /* Resources */,
 				D3A5F5BD1CCE7E6500116492 /* AppDelegate.swift */,
-				D3A5F5BF1CCE7E6500116492 /* ViewController.swift */,
-				D3A5F5D91CCF040400116492 /* csv.swift */,
 				D3A5F5C11CCE7E6500116492 /* Main.storyboard */,
 				D3A5F5C41CCE7E6500116492 /* Assets.xcassets */,
 				D3A5F5C61CCE7E6500116492 /* LaunchScreen.storyboard */,
@@ -90,6 +90,30 @@
 				D3A5F5D51CCEF65400116492 /* PokeCell.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		D3A5F5DB1CCF057000116492 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D3A5F5D91CCF040400116492 /* csv.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		D3A5F5DC1CCF057C00116492 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D3A5F5BF1CCE7E6500116492 /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		D3A5F5DD1CCF058900116492 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D3A5F5CF1CCEB29C00116492 /* pokemon.csv */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
