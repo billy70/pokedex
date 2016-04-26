@@ -136,7 +136,6 @@
                     </view>
                     <connections>
                         <outlet property="collection" destination="XCI-Nf-S8p" id="Ivg-A0-5Sa"/>
-                        <outlet property="volumeToggleButton" destination="tDI-y7-NWM" id="H4O-e5-30X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

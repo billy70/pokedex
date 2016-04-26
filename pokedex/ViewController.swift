@@ -12,7 +12,6 @@ import AVFoundation
 class ViewController: UIViewController {
     
     @IBOutlet weak var collection: UICollectionView!
-    @IBOutlet weak var volumeToggleButton: UIButton!
     
     var pokemon = [Pokemon]()
     var musicPlayer: AVAudioPlayer!
@@ -73,10 +72,10 @@ class ViewController: UIViewController {
     @IBAction func volumeButtonTapped(sender: UIButton) {
         if musicPlayer.playing {
             musicPlayer.stop()
-            volumeToggleButton.setImage(volumeImageOFF, forState: .Normal)
+            sender.setImage(volumeImageOFF, forState: .Normal)
         } else {
             musicPlayer.play()
-            volumeToggleButton.setImage(volumeImageON, forState: .Normal)
+            sender.setImage(volumeImageON, forState: .Normal)
         }
     }
 }
