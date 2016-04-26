@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var volumeToggleButton: UIButton!
     
     var pokemon = [Pokemon]()
+    var musicPlayer: AVAudioPlayer!
+    let volumeImageOFF = UIImage(named: "volume-OFF.png")
+    let volumeImageON = UIImage(named: "volume-ON.png")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +25,7 @@ class ViewController: UIViewController {
         collection.dataSource = self
         collection.delegate = self
         
+        initAudio()
         parsePokemonCSV()
     }
 
@@ -28,6 +34,22 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func initAudio() {
+        if let path = NSBundle.mainBundle().pathForResource("music", ofType: "mp3") {
+            let musicURL = NSURL(fileURLWithPath: path)
+            
+            do {
+                musicPlayer = try AVAudioPlayer(contentsOfURL: musicURL)
+                musicPlayer.prepareToPlay()
+                musicPlayer.numberOfLoops = -1
+                musicPlayer.play()
+                
+            } catch let err as NSError {
+                print(err.debugDescription)
+            }
+        }
+    }
+    
     func parsePokemonCSV() {
         
         let path = NSBundle.mainBundle().pathForResource("pokemon", ofType: "csv")!
@@ -48,6 +70,15 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction func volumeButtonTapped(sender: UIButton) {
+        if musicPlayer.playing {
+            musicPlayer.stop()
+            volumeToggleButton.setImage(volumeImageOFF, forState: .Normal)
+        } else {
+            musicPlayer.play()
+            volumeToggleButton.setImage(volumeImageON, forState: .Normal)
+        }
+    }
 }
 
 

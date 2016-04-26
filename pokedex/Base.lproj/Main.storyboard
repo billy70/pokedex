@@ -47,6 +47,9 @@
                                             <constraint firstAttribute="width" constant="30" id="sha-q5-ewg"/>
                                         </constraints>
                                         <state key="normal" image="volume-ON"/>
+                                        <connections>
+                                            <action selector="volumeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S5w-lz-ofH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.6588235294117647" green="0.81176470588235294" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
@@ -133,6 +136,7 @@
                     </view>
                     <connections>
                         <outlet property="collection" destination="XCI-Nf-S8p" id="Ivg-A0-5Sa"/>
+                        <outlet property="volumeToggleButton" destination="tDI-y7-NWM" id="H4O-e5-30X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
