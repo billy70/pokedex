@@ -9,11 +9,14 @@
 import UIKit
 
 class PokemonDetailVC: UIViewController {
+    
+    var pokemon: Pokemon!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        print("**> Pokemon passed in: \(pokemon.name)")
     }
 
     override func didReceiveMemoryWarning() {
