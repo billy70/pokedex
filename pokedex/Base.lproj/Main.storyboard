@@ -111,7 +111,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for Pokemon" translatesAutoresizingMaskIntoConstraints="NO" id="G7z-mj-8Un">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for Pokemon" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G7z-mj-8Un">
                                 <rect key="frame" x="0.0" y="83" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
