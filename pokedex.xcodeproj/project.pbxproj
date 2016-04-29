@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D306A7121CD3C6A000D8F6D8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D306A7111CD3C6A000D8F6D8 /* Alamofire.framework */; };
+		D306A7141CD3C9AA00D8F6D8 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D306A7111CD3C6A000D8F6D8 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D363D77E1CCFB0E50081065E /* Pokemon_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D363D77D1CCFB0E50081065E /* Pokemon_Solid.ttf */; };
 		D363D7801CCFDDA50081065E /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D363D77F1CCFDDA50081065E /* music.mp3 */; };
 		D363D7821CD199F70081065E /* PokemonDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D363D7811CD199F70081065E /* PokemonDetailVC.swift */; };
@@ -21,7 +23,21 @@
 		D3A5F5DA1CCF040400116492 /* csv.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A5F5D91CCF040400116492 /* csv.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D306A7131CD3C99C00D8F6D8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D306A7141CD3C9AA00D8F6D8 /* Alamofire.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		D306A7111CD3C6A000D8F6D8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D363D77D1CCFB0E50081065E /* Pokemon_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pokemon_Solid.ttf; sourceTree = "<group>"; };
 		D363D77F1CCFDDA50081065E /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
 		D363D7811CD199F70081065E /* PokemonDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonDetailVC.swift; sourceTree = "<group>"; };
@@ -43,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D306A7121CD3C6A000D8F6D8 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +69,7 @@
 		D3A5F5B11CCE7E6500116492 = {
 			isa = PBXGroup;
 			children = (
+				D306A7111CD3C6A000D8F6D8 /* Alamofire.framework */,
 				D3A5F5BC1CCE7E6500116492 /* pokedex */,
 				D3A5F5BB1CCE7E6500116492 /* Products */,
 			);
@@ -135,6 +153,7 @@
 				D3A5F5B61CCE7E6500116492 /* Sources */,
 				D3A5F5B71CCE7E6500116492 /* Frameworks */,
 				D3A5F5B81CCE7E6500116492 /* Resources */,
+				D306A7131CD3C99C00D8F6D8 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -320,6 +339,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = pokedex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.wlmiii.pokedex;
@@ -331,6 +354,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = pokedex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.wlmiii.pokedex;
