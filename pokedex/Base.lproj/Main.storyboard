@@ -160,14 +160,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VqC-p4-Rdr">
                                 <rect key="frame" x="0.0" y="28" width="414" height="55"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mM-x6-hPO">
-                                        <rect key="frame" x="8" y="9" width="71" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="Ts3-AI-eeS"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                        <state key="normal" title="&lt;- Back"/>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charizard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68Q-8z-8aQ">
                                         <rect key="frame" x="8" y="8" width="398" height="39"/>
                                         <constraints>
@@ -177,6 +169,17 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mM-x6-hPO">
+                                        <rect key="frame" x="8" y="9" width="71" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="Ts3-AI-eeS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="&lt;- Back"/>
+                                        <connections>
+                                            <action selector="backButtonTapped:" destination="174-9g-Pen" eventType="touchUpInside" id="QGu-tY-tQa"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.6588235294" green="0.81176470590000005" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -434,6 +437,20 @@
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="baseAttackLabel" destination="wGu-xz-9h0" id="XWf-X6-KND"/>
+                        <outlet property="currentEvolutionImage" destination="brq-Hg-sSy" id="j63-IC-JRB"/>
+                        <outlet property="defenseLabel" destination="cpR-Sf-DVK" id="rv0-bV-uIc"/>
+                        <outlet property="descriptionLabel" destination="zhw-xW-W4Y" id="4bI-de-gIb"/>
+                        <outlet property="heightLabel" destination="5fW-rh-e7n" id="bVk-Nd-B4A"/>
+                        <outlet property="mainImage" destination="4fJ-4P-MGV" id="eWW-lf-zFj"/>
+                        <outlet property="nameLabel" destination="68Q-8z-8aQ" id="Qj5-za-bJl"/>
+                        <outlet property="nextEvolutionImage" destination="5Fg-Bv-Koh" id="COo-wQ-x5o"/>
+                        <outlet property="nextEvolutionLabel" destination="veZ-Fh-L9F" id="Jsr-ME-zkW"/>
+                        <outlet property="pokedexIDLabel" destination="pUi-1U-Krh" id="kA9-4v-dZ1"/>
+                        <outlet property="typeLabel" destination="mzI-UL-97O" id="ILh-HV-x7l"/>
+                        <outlet property="weightLabel" destination="vI4-4A-Du5" id="OWJ-sw-Ogk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yvj-kk-8ZH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
