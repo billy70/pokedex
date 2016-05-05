@@ -81,124 +81,151 @@ class Pokemon {
     }
     
     func downloadPokemonDetails(completionHandler: DownloadComplete) {
-        
+        print("downloadPokemonDetails() method called")
         let url = NSURL(string: _pokemonURL)!
         Alamofire.request(.GET, url).responseJSON { response in
             
-            print("**> ALAMOFIRE REQUEST:")
-            print(response.request)
-            print("**> ALAMOFIRE RESPONSE:")
-            print(response.response)
-            print("**> ALAMOFIRE DATA:")
-            print(response.data)
-            print("**> ALAMOFIRE RESULT:")
-            print(response.result)
+//            print("**> ALAMOFIRE REQUEST:")
+//            print(response.request)
+//            print("**> ALAMOFIRE RESPONSE:")
+//            print(response.response)
+//            print("**> ALAMOFIRE DATA:")
+//            print(response.data)
+//            print("**> ALAMOFIRE RESULT:")
+//            print(response.result)
             
-            if let JSON = response.result.value {
-                print("**> ALAMOFIRE JSON:")
-                print(JSON)
-            }
+//            if let JSON = response.result.value {
+//                print("**> ALAMOFIRE JSON:")
+//                print(JSON)
+//            }
             
             if let dict = response.result.value as? Dictionary<String, AnyObject> {
+                self.parseAttack(dict)
+                self.parseDefense(dict)
+                self.parseHeight(dict)
+                self.parseWeight(dict)
+                self.parseTypes(dict)
+                self.parseMoves(dict)
+                self.parseEvolutions(dict)
                 
-                if let attack = dict["attack"] as? Int {
-                    self._baseAttack = String(attack)
-                    print("attack: \(attack)")
-                }
-                
-                if let defense = dict["defense"] as? Int {
-                    self._defense = String(defense)
-                    print("defense: \(defense)")
-                }
-                
-                if let height = dict["height"] as? String {
-                    self._height = height
-                    print("height: \(height)")
-                }
-                
-                if let weight = dict["weight"] as? String {
-                    self._weight = weight
-                    print("weight: \(weight)")
-                }
-                
-                if let typesArray = dict["types"] as? [Dictionary<String, String>] where typesArray.count > 0 {
-                    self._type = ""
-                    
-                    for (index, typeDict) in typesArray.enumerate() {
-                        if let pokeType = typeDict["name"] {
-                            if index > 0 {
-                                self._type += " / "
-                            }
-                            self._type += pokeType.capitalizedString
-                        }
-                    }
-                    
-                    print("types: \(self._type)")
-                } else {
-                    self._type = ""
-                }
-                
-                if let descriptionArray = dict["descriptions"] as? [Dictionary<String, String>] where descriptionArray.count > 0 {
-                    
-                    self._description = ""
-                    
-                    // Get the first entry only (even if there is more than 1)
-                    if let url = descriptionArray[0]["resource_uri"] {
-                        let nsurl = NSURL(string: "\(URL_BASE)\(url)")!
-                        
-                        Alamofire.request(.GET, nsurl).responseJSON { response in
-                            
-                            let descriptionResult = response.result
-                            if let descriptionDict = descriptionResult.value as? Dictionary<String, AnyObject> {
-                                
-                                if let pokeDescription = descriptionDict["description"] as? String {
-                                    self._description = pokeDescription
-                                    print("description: \(self._description)")
-                                }
-                            }
-                            
-                            // Call the passed-in completion handler, which was passed in
-                            // by the details view controller.
-                            completionHandler()
-                        }
-                    }
-                }
+                // The description has to be parsed last due to the parseDescription()
+                // method making another separate asynchronous request, which necessitates
+                // calling the completion handler from within parseDescription().
+                self.parseDescription(dict, completionHandler: completionHandler)
+            }
+        }
+        
+        print("end of downloadPokemonDetails() method")
+    }
 
-                self._moves = ""
-                if let movesArray = dict["moves"] as? [Dictionary<String, AnyObject>] where movesArray.count > 0 {
+    func parseAttack(dict: Dictionary<String, AnyObject>) {
+        if let attack = dict["attack"] as? Int {
+            self._baseAttack = String(attack)
+            print("attack: \(attack)")
+        }
+    }
+    
+    func parseDefense(dict: Dictionary<String, AnyObject>) {
+        if let defense = dict["defense"] as? Int {
+            self._defense = String(defense)
+            print("defense: \(defense)")
+        }
+    }
+    
+    func parseHeight(dict: Dictionary<String, AnyObject>) {
+        if let height = dict["height"] as? String {
+            self._height = height
+            print("height: \(height)")
+        }
+    }
+
+    func parseWeight(dict: Dictionary<String, AnyObject>) {
+        if let weight = dict["weight"] as? String {
+            self._weight = weight
+            print("weight: \(weight)")
+        }
+    }
+
+    func parseTypes(dict: Dictionary<String, AnyObject>) {
+        self._type = ""
+        
+        if let typesArray = dict["types"] as? [Dictionary<String, String>] where typesArray.count > 0 {
+            for (index, typeDict) in typesArray.enumerate() {
+                if let pokeType = typeDict["name"] {
+                    if index > 0 {
+                        self._type += " / "
+                    }
+                    self._type += pokeType.capitalizedString
+                }
+            }
+            print("types: \(self._type)")
+        }
+    }
+
+    func parseDescription(dict: Dictionary<String, AnyObject>, completionHandler: DownloadComplete) {
+        self._description = ""
+
+        if let descriptionArray = dict["descriptions"] as? [Dictionary<String, String>] where descriptionArray.count > 0 {
+            
+            // Get the first entry only (even if there is more than 1)
+            if let url = descriptionArray[0]["resource_uri"] {
+                let nsurl = NSURL(string: "\(URL_BASE)\(url)")!
+                
+                Alamofire.request(.GET, nsurl).responseJSON { response in
                     
-                    for (index, movesDict) in movesArray.enumerate() {
-                        if let pokeMove = movesDict["name"] as? String {
-                            if index > 0 {
-                                self._moves += ", "
-                            }
-                            self._moves += pokeMove.capitalizedString
+                    let descriptionResult = response.result
+                    if let descriptionDict = descriptionResult.value as? Dictionary<String, AnyObject> {
+                        
+                        if let pokeDescription = descriptionDict["description"] as? String {
+                            self._description = pokeDescription
+                            print("description: \(self._description)")
                         }
                     }
-                }
-                
-                if let evolutions = dict["evolutions"] as? [Dictionary<String, AnyObject>] where evolutions.count > 0 {
                     
-                    if let evolveTo = evolutions[0]["to"] as? String {
-                        
-                        // Skip any "Mega" evolutions for now.
-                        if evolveTo.rangeOfString("mega") == nil {
-                            
-                            self._nextEvolutionText = evolveTo
-                            print("next evolution text: \(self._nextEvolutionText)")
+                    completionHandler()
+                }
+            }
+        }
+    }
+    
+    func parseMoves(dict: Dictionary<String, AnyObject>) {
+        self._moves = ""
 
-                            if let uri = evolutions[0]["resource_uri"] as? String {
-                                
-                                let newStr = uri.stringByReplacingOccurrencesOfString(URL_POKEMONAPI_V1, withString: "")
-                                let num = newStr.stringByReplacingOccurrencesOfString("/", withString: "")
-                                self._nextEvolutionID = num
-                                print("evolution ID: \(self._nextEvolutionID)")
-                                
-                                if let evolutionLevel = evolutions[0]["level"] as? Int {
-                                    self._nextEvolutionLevel = "\(evolutionLevel)"
-                                    print("next evolution level: \(self._nextEvolutionLevel)")
-                                }
-                            }
+        if let movesArray = dict["moves"] as? [Dictionary<String, AnyObject>] where movesArray.count > 0 {
+            
+            for (index, movesDict) in movesArray.enumerate() {
+                if let pokeMove = movesDict["name"] as? String {
+                    if index > 0 {
+                        self._moves += ", "
+                    }
+                    self._moves += pokeMove.capitalizedString
+                }
+            }
+        }
+    }
+    
+    func parseEvolutions(dict: Dictionary<String, AnyObject>) {
+        
+        if let evolutions = dict["evolutions"] as? [Dictionary<String, AnyObject>] where evolutions.count > 0 {
+            
+            if let evolveTo = evolutions[0]["to"] as? String {
+                
+                // Skip any "Mega" evolutions for now.
+                if evolveTo.rangeOfString("mega") == nil {
+                    
+                    self._nextEvolutionText = evolveTo
+                    print("next evolution text: \(self._nextEvolutionText)")
+
+                    if let uri = evolutions[0]["resource_uri"] as? String {
+                        
+                        let newStr = uri.stringByReplacingOccurrencesOfString(URL_POKEMONAPI_V1, withString: "")
+                        let num = newStr.stringByReplacingOccurrencesOfString("/", withString: "")
+                        self._nextEvolutionID = num
+                        print("evolution ID: \(self._nextEvolutionID)")
+                        
+                        if let evolutionLevel = evolutions[0]["level"] as? Int {
+                            self._nextEvolutionLevel = "\(evolutionLevel)"
+                            print("next evolution level: \(self._nextEvolutionLevel)")
                         }
                     }
                 }
@@ -206,3 +233,4 @@ class Pokemon {
         }
     }
 }
+
