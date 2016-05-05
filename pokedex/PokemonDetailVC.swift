@@ -48,14 +48,10 @@ class PokemonDetailVC: UIViewController {
         
         // Wait until the remote API responds before setting
         // the images for the evolutions (done in updateUI()).
-        currentEvolutionImage.hidden = true
-        nextEvolutionImage.hidden = true
+        currentEvolutionImage.image = nil
+        nextEvolutionImage.image = nil
         
         pokemon.downloadPokemonDetails { () -> Void in
-            
-            // This code gets called when asynchronous download request completes.
-            print("COMPLETION HANDLER CALLED")
-            
             // At this point, the download request to the pokeapi.co RESTful API
             // has finished, and the user interface can be set up with the details.
             self.updateUI()
@@ -64,7 +60,6 @@ class PokemonDetailVC: UIViewController {
     
     func updateUI() {
         currentEvolutionImage.image = mainPokeImage
-        currentEvolutionImage.hidden = false
         descriptionLabel.text = pokemon.pokeDescription
         typeLabel.text = pokemon.pokeType
         defenseLabel.text = pokemon.defense
@@ -75,9 +70,7 @@ class PokemonDetailVC: UIViewController {
         
         if pokemon.nextEvolutionID == "" {
             nextEvolutionLabel.text = "No Evolutions"
-            nextEvolutionImage.hidden = true
         } else {
-            nextEvolutionImage.hidden = false
             nextEvolutionImage.image = UIImage(named: pokemon.nextEvolutionID)
             
             var evolutionText = "Next Evolution: \(pokemon.nextEvolutionText)"
