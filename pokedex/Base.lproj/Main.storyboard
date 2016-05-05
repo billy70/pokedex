@@ -203,6 +203,9 @@
                                             <segment title="Bio"/>
                                             <segment title="Moves"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="bioAndMovesSegmentValueChanged:" destination="174-9g-Pen" eventType="valueChanged" id="jd0-ei-AYT"/>
+                                        </connections>
                                     </segmentedControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3s0-6A-VXD" userLabel="ImageDescriptionStackView">
                                         <rect key="frame" x="0.0" y="74" width="374" height="120"/>
@@ -439,6 +442,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="baseAttackLabel" destination="wGu-xz-9h0" id="XWf-X6-KND"/>
+                        <outlet property="bioAndMovesSegment" destination="RvQ-Ve-bwV" id="398-Fx-qUa"/>
                         <outlet property="currentEvolutionImage" destination="brq-Hg-sSy" id="j63-IC-JRB"/>
                         <outlet property="defenseLabel" destination="cpR-Sf-DVK" id="rv0-bV-uIc"/>
                         <outlet property="descriptionLabel" destination="zhw-xW-W4Y" id="4bI-de-gIb"/>

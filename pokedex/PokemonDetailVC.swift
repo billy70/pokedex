@@ -25,9 +25,10 @@ class PokemonDetailVC: UIViewController {
     @IBOutlet weak var nextEvolutionLabel: UILabel!
     @IBOutlet weak var currentEvolutionImage: UIImageView!
     @IBOutlet weak var nextEvolutionImage: UIImageView!
+    @IBOutlet weak var bioAndMovesSegment: UISegmentedControl!
     
     var pokemon: Pokemon!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -97,5 +98,13 @@ class PokemonDetailVC: UIViewController {
 
     @IBAction func backButtonTapped(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func bioAndMovesSegmentValueChanged(sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            descriptionLabel.text = pokemon.pokeDescription
+        } else {
+            descriptionLabel.text = pokemon.moves
+        }
     }
 }
