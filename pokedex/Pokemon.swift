@@ -81,23 +81,8 @@ class Pokemon {
     }
     
     func downloadPokemonDetails(completionHandler: DownloadComplete) {
-        print("downloadPokemonDetails() method called")
         let url = NSURL(string: _pokemonURL)!
         Alamofire.request(.GET, url).responseJSON { response in
-            
-//            print("**> ALAMOFIRE REQUEST:")
-//            print(response.request)
-//            print("**> ALAMOFIRE RESPONSE:")
-//            print(response.response)
-//            print("**> ALAMOFIRE DATA:")
-//            print(response.data)
-//            print("**> ALAMOFIRE RESULT:")
-//            print(response.result)
-            
-//            if let JSON = response.result.value {
-//                print("**> ALAMOFIRE JSON:")
-//                print(JSON)
-//            }
             
             if let dict = response.result.value as? Dictionary<String, AnyObject> {
                 self.parseAttack(dict)
@@ -114,35 +99,29 @@ class Pokemon {
                 self.parseDescription(dict, completionHandler: completionHandler)
             }
         }
-        
-        print("end of downloadPokemonDetails() method")
     }
 
     func parseAttack(dict: Dictionary<String, AnyObject>) {
         if let attack = dict["attack"] as? Int {
             self._baseAttack = String(attack)
-            print("attack: \(attack)")
         }
     }
     
     func parseDefense(dict: Dictionary<String, AnyObject>) {
         if let defense = dict["defense"] as? Int {
             self._defense = String(defense)
-            print("defense: \(defense)")
         }
     }
     
     func parseHeight(dict: Dictionary<String, AnyObject>) {
         if let height = dict["height"] as? String {
             self._height = height
-            print("height: \(height)")
         }
     }
 
     func parseWeight(dict: Dictionary<String, AnyObject>) {
         if let weight = dict["weight"] as? String {
             self._weight = weight
-            print("weight: \(weight)")
         }
     }
 
@@ -158,7 +137,6 @@ class Pokemon {
                     self._type += pokeType.capitalizedString
                 }
             }
-            print("types: \(self._type)")
         }
     }
 
@@ -178,7 +156,6 @@ class Pokemon {
                         
                         if let pokeDescription = descriptionDict["description"] as? String {
                             self._description = pokeDescription
-                            print("description: \(self._description)")
                         }
                     }
                     
@@ -214,18 +191,15 @@ class Pokemon {
                 if evolveTo.rangeOfString("mega") == nil {
                     
                     self._nextEvolutionText = evolveTo
-                    print("next evolution text: \(self._nextEvolutionText)")
 
                     if let uri = evolutions[0]["resource_uri"] as? String {
                         
                         let newStr = uri.stringByReplacingOccurrencesOfString(URL_POKEMONAPI_V1, withString: "")
                         let num = newStr.stringByReplacingOccurrencesOfString("/", withString: "")
                         self._nextEvolutionID = num
-                        print("evolution ID: \(self._nextEvolutionID)")
                         
                         if let evolutionLevel = evolutions[0]["level"] as? Int {
                             self._nextEvolutionLevel = "\(evolutionLevel)"
-                            print("next evolution level: \(self._nextEvolutionLevel)")
                         }
                     }
                 }
