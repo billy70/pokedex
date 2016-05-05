@@ -19,6 +19,7 @@ class Pokemon {
     private var _height = ""
     private var _weight = ""
     private var _baseAttack = ""
+    private var _moves = ""
     private var _nextEvolutionID = ""
     private var _nextEvolutionLevel = ""
     private var _nextEvolutionText = ""
@@ -54,6 +55,10 @@ class Pokemon {
     
     var baseAttack: String {
         return _baseAttack
+    }
+    
+    var moves: String {
+        return _moves
     }
     
     var nextEvolutionID: String {
@@ -155,6 +160,19 @@ class Pokemon {
                             // Call the passed-in completion handler, which was passed in
                             // by the details view controller.
                             completionHandler()
+                        }
+                    }
+                }
+
+                self._moves = ""
+                if let movesArray = dict["moves"] as? [Dictionary<String, AnyObject>] where movesArray.count > 0 {
+                    
+                    for (index, movesDict) in movesArray.enumerate() {
+                        if let pokeMove = movesDict["name"] as? String {
+                            if index > 0 {
+                                self._moves += ", "
+                            }
+                            self._moves += pokeMove.capitalizedString
                         }
                     }
                 }
